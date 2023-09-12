@@ -1,23 +1,37 @@
-// Función para procesar el pago y mostrar un mensaje personalizado
+// Procesamos el pago aquí
 function procesarPago() {
-    const nombre = document.getElementById("nombre").value;
-    const edad = parseInt(document.getElementById("edad").value);
-    const genero = document.querySelector('input[name="genero"]:checked').value;
-    const tarjeta = document.getElementById("tarjeta").value;
-    const codigo = document.getElementById("codigo").value;
-    const direccion = document.getElementById("direccion").value;
-    const monto = parseFloat(document.getElementById("monto").value);
+    let nombre;
+    let edad;
+    let genero;
+    let tarjeta;
+    let codigo;
+    let direccion;
+    let monto;
 
-    // Validar el nombre para asegurarse de que no contiene números
-    if (/\d/.test(nombre)) {
-        alert("El nombre no puede contener números. Por favor, corrige el nombre.");
-        return; // Salir de la función si el nombre es inválido
-    }
+    // While para que los datos sean validos
+    while (true) {
+        nombre = document.getElementById("nombre").value;
+        edad = parseInt(document.getElementById("edad").value);
+        genero = document.querySelector('input[name="genero"]:checked');
+        tarjeta = document.getElementById("tarjeta").value;
+        codigo = document.getElementById("codigo").value;
+        direccion = document.getElementById("direccion").value;
+        monto = parseFloat(document.getElementById("monto").value);
 
-    // Verificar si los campos obligatorios están completos
-    if (!nombre || isNaN(edad) || !genero || !tarjeta || !codigo || !direccion || isNaN(monto) || monto <= 0) {
-        alert("Por favor, completa todos los campos correctamente antes de realizar el pago.");
-        return; // Salir de la función si falta algún dato
+        // Nos aseguramos que el nombre no tenga números
+        if (/\d/.test(nombre)) {
+            alert("El nombre no puede contener números. Por favor, corrige el nombre.");
+            continue; // Volver a solicitar los datos si el nombre es inválido
+        }
+
+        // Verificamos si los datos estan completos 
+        if (!nombre || isNaN(edad) || !genero || !tarjeta || !codigo || !direccion || isNaN(monto) || monto <= 0) {
+            alert("Por favor, completa todos los campos correctamente antes de realizar el pago.");
+            continue; // Volver a solicitar los datos si falta alguno
+        }
+
+        // Si todos estan bien, salimos del bucle
+        break;
     }
 
     // Si todos los datos son válidos, mostrar el mensaje
@@ -29,8 +43,8 @@ function procesarPago() {
     mensajeElement.style.display = "block"; // Mostrar el mensaje
 }
 
-// Escuchar el envío del formulario
+// enviar formulario
 document.getElementById("formulario").addEventListener("submit", function (event) {
-    event.preventDefault(); // Evitar el envío por defecto del formulario
+    event.preventDefault(); // Evitar que se envie solo
     procesarPago();
 });
