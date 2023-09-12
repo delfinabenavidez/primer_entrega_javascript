@@ -2,17 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Verificar Edad</title>
+    <title>Pago con Tarjeta</title>
 </head>
 <body>
-
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Verificar Datos Personales</title>
-</head>
-    <h1>Verificar Datos Personales</h1>
+    <h1>Pago con Tarjeta</h1>
     <form id="formulario">
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" required><br><br>
@@ -26,9 +19,24 @@
         <input type="radio" id="mujer" name="genero" value="Mujer" required>
         <label for="mujer">Mujer</label><br><br>
 
-        <input type="submit" value="Verificar">
+        <label for="tarjeta">Número de Tarjeta:</label>
+        <input type="text" id="tarjeta" required><br><br>
+
+        <label for="codigo">Código de Seguridad:</label>
+        <input type="password" id="codigo" required><br><br>
+
+        <label for="direccion">Dirección del Domicilio:</label>
+        <textarea id="direccion" required></textarea><br><br>
+
+        <label for="monto">Monto a Pagar:</label>
+        <input type="number" id="monto" required><br><br>
+
+        <input type="submit" value="Realizar Pago">
     </form>
+
+    <div id="mensaje"></div>
 
     <script src="principal.js"></script>
 </body>
 </html>
+
